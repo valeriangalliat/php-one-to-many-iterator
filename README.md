@@ -67,10 +67,11 @@ To achieve this, just pass your database result to
 while configuring the common key (here, `id`), and aggregate key (here,
 `children`).
 
+Assuming `$result` contains the raw SQL result iterator:
+
 ```php
 <?php
 
-// Assuming `$result` contains the raw SQL result iterator
 
 // With an iterator
 $aggregated = new OneToManyIterator('id', 'children', $result);
