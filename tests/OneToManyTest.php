@@ -6,14 +6,7 @@ abstract class OneToManyTest extends \PHPUnit_Framework_TestCase
 {
     public function testEmpty()
     {
-        $this->execute([
-            ['id' => 1, 'name' => 'foo'],
-            ['id' => 1, 'name' => 'bar'],
-            ['id' => 2, 'name' => 'baz'],
-        ], [
-            ['id' => 1, 'items' => [['name' => 'foo'], ['name' => 'bar']]],
-            ['id' => 2, 'items' => [['name' => 'baz'], ]],
-        ]);
+        $this->execute([], []);
     }
 
     public function testSingle()
@@ -25,14 +18,41 @@ abstract class OneToManyTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
+    public function testRegular()
+    {
+        $this->execute([
+            ['id' => 1, 'name' => 'foo'],
+            ['id' => 1, 'name' => 'bar'],
+            ['id' => 2, 'name' => 'baz'],
+        ], [
+            ['id' => 1, 'items' => [['name' => 'foo'], ['name' => 'bar']]],
+            ['id' => 2, 'items' => [['name' => 'baz'], ]],
+        ]);
+    }
+
     protected function execute(array $array, array $expected)
     {
         $iterator = new \ArrayIterator($array);
         $iterator = $this->create($iterator);
 
-        $result = iterator_to_array($iterator);
-        $this->assertEquals($result + $expected, $result);
+        for ($i = 0; $i < 2; $i++) {
+            $result = iterator_to_array($iterator);
+            $this->assertLike($result, $expected);
+        }
     }
 
     abstract protected function create(\Traversable $iterator);
+
+    protected function assertLike(array $result, array $expected)
+    {
+        $this->assertEquals(empty($expected), empty($result));
+
+        foreach ($expected as $k => $v) {
+            if (is_array($v)) {
+                $this->assertLike($result[$k], $v);
+            } else {
+                $this->assertEquals($result[$k], $v);
+            }
+        }
+    }
 }

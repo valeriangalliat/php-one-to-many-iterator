@@ -3,11 +3,18 @@ PHPCS = vendor/bin/phpcs
 PHPUNIT = vendor/bin/phpunit
 
 PHPCS_FLAGS = --standard=PSR2 src tests
+PHPUNIT_FLAGS =
+PHPUNIT_COVERAGE_FLAGS = --coverage-html=coverage
 
 all: lint test
 
-lint:
+lint: force
 	$(PHPCS) $(PHPCS_FLAGS)
 
-test:
-	$(PHPUNIT)
+test: force
+	$(PHPUNIT) $(PHPUNIT_FLAGS)
+
+coverage: force
+	$(PHPUNIT) $(PHPUNIT_COVERAGE_FLAGS)
+
+force:
