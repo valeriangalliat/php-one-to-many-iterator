@@ -4,7 +4,7 @@ PHPUNIT = vendor/bin/phpunit
 
 PHPCS_FLAGS = --standard=PSR2 src tests
 PHPUNIT_FLAGS =
-PHPUNIT_COVERAGE_FLAGS = --coverage-html=coverage
+PHPUNIT_COVERAGE_FLAGS = --coverage-html=coverage --coverage-text
 
 all: lint test
 
