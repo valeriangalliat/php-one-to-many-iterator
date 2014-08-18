@@ -1,4 +1,4 @@
-One-to-many Iterator
+One-to-many iterator
 ====================
 
 > Helper iterator and generator for one-to-many joins
