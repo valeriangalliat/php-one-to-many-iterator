@@ -7,9 +7,9 @@ Overview
 --------
 
 When you want to fetch a one-to-many relation, you're probably using
-a `JOIN` to avoid the [N+1 selects problem][selects-problem].
+a `JOIN` to avoid the [N+1 selects problem][0].
 
-[selects-problem]: http://use-the-index-luke.com/sql/join/nested-loops-join-n1-problem
+[0]: http://use-the-index-luke.com/sql/join/nested-loops-join-n1-problem
 
 Though, it may be difficult to iterate over the result, especially when
 you need the whole "many" part of the relation loaded for a process.
@@ -21,6 +21,14 @@ in streaming, without loading the whole set in memory).
 
 It will then aggregate the "many" part of the relation in a configurable
 key.
+
+Installation
+------------
+
+Through [Composer][1] as [`val/one-to-many-iterator`][2].
+
+[1]: https://getcomposer.org/
+[2]: https://packagist.org/packages/val/one-to-many-iterator
 
 Example
 -------
