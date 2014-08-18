@@ -72,7 +72,6 @@ Assuming `$result` contains the raw SQL result iterator:
 ```php
 <?php
 
-
 // With an iterator
 $aggregated = new OneToManyIterator('id', 'children', $result);
 
