@@ -1,0 +1,23 @@
+{
+  "name": "val/one-to-many-iterator",
+  "description": "Helper iterator and generator for one-to-many joins",
+  "homepage": "https://github.com/valeriangalliat/php-one-to-many-iterator",
+  "license": "Unlicense",
+
+  "authors": [
+    {"name": "Valérian Galliat"}
+  ],
+
+  "require-dev": {
+    "squizlabs/php_codesniffer": "1.*",
+    "phpunit/phpunit": "4.*"
+  },
+
+  "autoload": {
+    "psr-4": {"Val\\Iterator\\": "src/"}
+  },
+
+  "autoload-dev": {
+    "psr-4": {"Val\\Iterator\\Tests\\": "tests/" }
+  }
+}
