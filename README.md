@@ -35,7 +35,7 @@ this (a typical `JOIN`):
     ['id' => 1, 'parent_column' => 'hello', 'child_column' => 'foo'],
     ['id' => 1, 'parent_column' => 'hello', 'child_column' => 'bar'],
     ['id' => 2, 'parent_column' => 'world', 'child_column' => 'baz'],
-]
+];
 ```
 
 But you'd like to iterate over something like this:
@@ -59,7 +59,7 @@ But you'd like to iterate over something like this:
             ['child_column' => 'baz'],
         ],
     ],
-]
+];
 ```
 
 To achieve this, just pass your database result to
