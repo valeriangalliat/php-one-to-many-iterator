@@ -1,7 +1,7 @@
 One-to-many iterator
 ====================
 
-> Helper iterator and generator for one-to-many joins
+> Helper iterator and generator for one-to-many joins.
 
 Overview
 --------
@@ -25,13 +25,12 @@ key.
 Installation
 ------------
 
-Through [Composer][1] as [`val/one-to-many-iterator`][2].
+```sh
+composer require val/one-to-many-iterator
+```
 
-[1]: https://getcomposer.org/
-[2]: https://packagist.org/packages/val/one-to-many-iterator
-
-Example
--------
+Examples
+--------
 
 Your database result iterator, once converted into an array, looks like
 this (a typical `JOIN`):
