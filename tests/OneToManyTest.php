@@ -18,15 +18,28 @@ abstract class OneToManyTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
+    public function testSingleAggregation()
+    {
+        $this->execute([
+            ['id' => 1, 'name' => 'foo'],
+            ['id' => 1, 'name' => 'bar'],
+        ], [
+            ['id' => 1, 'items' => [['name' => 'foo'], ['name' => 'bar']]],
+        ]);
+    }
+
     public function testRegular()
     {
         $this->execute([
             ['id' => 1, 'name' => 'foo'],
             ['id' => 1, 'name' => 'bar'],
             ['id' => 2, 'name' => 'baz'],
+            ['id' => 3, 'name' => 'boo'],
+            ['id' => 3, 'name' => 'boz'],
         ], [
             ['id' => 1, 'items' => [['name' => 'foo'], ['name' => 'bar']]],
             ['id' => 2, 'items' => [['name' => 'baz'], ]],
+            ['id' => 3, 'items' => [['name' => 'boo'], ['name' => 'boz']]],
         ]);
     }
 

@@ -99,12 +99,12 @@ class OneToManyIterator extends \IteratorIterator
      */
     public function next()
     {
-        if (!$this->getInnerIterator()->valid()) {
-            $this->forward();
-            return;
-        }
+        while (true) {
+            if (!$this->getInnerIterator()->valid()) {
+                $this->forward();
+                break;
+            }
 
-        while ($this->getInnerIterator()->valid()) {
             $current = $this->getInnerIterator()->current();
 
             if ($current[$this->commonKey] !== $this->last[$this->commonKey]) {
@@ -139,7 +139,7 @@ class OneToManyIterator extends \IteratorIterator
         $this->current = $this->last;
 
         if (!$this->getInnerIterator()->valid()) {
-            // Allow to forward the last `null`
+            // Allow to forward the last item.
             $this->last = null;
         } else {
             $this->last = $this->getInnerIterator()->current();
